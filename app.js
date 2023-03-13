@@ -12,9 +12,10 @@ const io = new Server(3000, {
 
 const userList = [];
 
+// 监听客户端连接
 io.on('connection', (socket) => {
   console.log("connected")
-  // console.log('>>>>> handshake: ', socket.handshake.query)
+  // 客户端发送的参数
   const { username } = socket.handshake.query;
   if (!username) return;
   const userinfo = userList.find(item => item.username === username);
